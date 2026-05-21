@@ -41,6 +41,7 @@ leptos = { version = "0.8.19", features = ["rkyv", "tracing"] }
 leptos_axum = { version = "0.8.9", optional = true }
 leptos_meta = { version = "0.8.6" }
 leptos_router = { version = "0.8.13" }
+leptos-use = "0.18.3"
 
 wasm-bindgen = { version = "=0.2.117", optional = true }
 

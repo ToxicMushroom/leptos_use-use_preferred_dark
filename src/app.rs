@@ -23,6 +23,7 @@ use leptodon::navbar::NavbarEntries;
 use leptodon::navbar::SideBarLink;
 use leptodon::navbar::SideNavbar;
 use leptos::prelude::*;
+use leptos::logging::debug_log;
 use leptos_meta::MetaTags;
 use leptos_meta::Stylesheet;
 use leptos_meta::Title;
@@ -99,6 +100,14 @@ fn Home() -> impl IntoView {
     view! {
         <Title text="Welcome" />
         <p>Hello World!</p>
+        <p>{ move || {
+            debug_log!("Recalculating use_preferred_dark closure..");
+            if leptos_use::use_preferred_dark().get() {
+                "You prefer dark theme!"
+            } else {
+                "You prefer light theme!"
+            }
+        }}</p>
     }
 }
 
