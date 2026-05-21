@@ -15,13 +15,6 @@
 //
 // You should have received a copy of the Apache License along with this program.
 // If not, see <http://www.apache.org/licenses/>
-use leptodon::button::{Button, ButtonAppearance};
-use leptodon::darkmode::ThemeSelector;
-use leptodon::icon;
-use leptodon::navbar::NavbarEndChildren;
-use leptodon::navbar::NavbarEntries;
-use leptodon::navbar::SideBarLink;
-use leptodon::navbar::SideNavbar;
 use leptos::prelude::*;
 use leptos::logging::debug_log;
 use leptos_meta::MetaTags;
@@ -60,19 +53,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
 pub fn RouteShell() -> impl IntoView {
     view! {
         <main>
-            <SideNavbar>
-                <NavbarEntries slot:entries>
-                    <li><SideBarLink href="/" icon=icon::HomeIcon()>Home</SideBarLink></li>
-                    <li><SideBarLink href="test" icon=icon::InfoIcon()>Info</SideBarLink></li>
-                </NavbarEntries>
-                <NavbarEndChildren slot:end>
-                    <ThemeSelector />
-                </NavbarEndChildren>
-
-                <div class="mt-[100px]">
-                    <Outlet />
-                </div>
-            </SideNavbar>
+            <Outlet />
         </main>
     }
 }
@@ -117,12 +98,6 @@ fn Test() -> impl IntoView {
         <Title text=NAME />
         <main class="flex justify-center align-center min-h-full mt-[100px]">
             <div>
-                <h1 class="font-bold text-4xl">{NAME}</h1>
-                <h2 class="text-xl">Your Leptos UI toolkit</h2>
-                <Button appearance=ButtonAppearance::Primary>Docs</Button>
-                <Button appearance=ButtonAppearance::Primary>Demo</Button>
-                <Button>Crate</Button>
-                <Button>Github</Button>
             </div>
         </main>
     }

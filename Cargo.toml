@@ -45,9 +45,6 @@ leptos-use = "0.18.3"
 
 wasm-bindgen = { version = "=0.2.117", optional = true }
 
-leptodon = { version = "1.3.0", default-features = false, features = [] }
-leptos-struct-table = { version = "0.18", features = ["chrono"] }
-
 axum-extra = { version = "0.12.6", optional = true, features = ["cookie"] }
 
 regex = { version = "1.12", optional = true }
@@ -71,7 +68,6 @@ ssr = [
     "leptos/ssr",
     "leptos_meta/ssr",
     "leptos_router/ssr",
-    "leptodon/ssr",
     "dep:leptos_axum",
     "dep:tokio",
     "dep:axum",
@@ -88,11 +84,9 @@ ssr = [
 hydrate = [
     "leptos/hydrate",
     "dep:wasm-bindgen",
-    "leptodon/hydrate"
 ]
 csr = [
     "leptos/csr",
-    "leptodon/csr"
 ]
 tower = ["dep:tower"]
 tower-http = ["dep:tower-http"]
