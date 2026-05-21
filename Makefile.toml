@@ -1,0 +1,47 @@
+# Builds
+[tasks.build-starter]
+cwd = "."
+command = "cargo"
+args = ["leptos", "build", "--release", "--precompress", "-vv"]
+
+# Lints
+[tasks.lint-starter]
+cwd = "."
+command = "cargo"
+args = ["clippy", "--all-targets", "--all-features", "--", "-D", "warnings"]
+
+[tasks.lint-codegen]
+cwd = "./codegen"
+command = "cargo"
+args = ["clippy", "--all-targets", "--all-features", "--", "-D", "warnings"]
+
+[tasks.lint]
+run_task = { name = [
+    "lint-starter",
+    "lint-codegen",
+] }
+
+# Tests
+[tasks.unit-tests]
+cwd = "."
+command = "cargo"
+args = ["nextest", "run"]
+
+[tasks.integration-tests]
+workspace = false
+cwd = "./"
+command = "cargo"
+args = ["leptos", "end-to-end", "--precompress", "--release"]
+
+[tasks.tests]
+run_task = { name = [
+    "unit-tests",
+    "integration-tests"
+] }
+
+# Tries to run the same checks as the CI, locally.
+[tasks.mimic-ci]
+run_task = { name = [
+    "lint",
+    "tests"
+] }
